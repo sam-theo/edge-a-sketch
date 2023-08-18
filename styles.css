@@ -1,0 +1,23 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.cell {
+    width: calc(100% / 16); /* Each cell occupies 1/16th of the width */
+    height: calc(100% / 16); /* Each cell occupies 1/16th of the height */
+    margin: 0;
+}
+
+.cell:hover{
+    background-color: blue;
+}
