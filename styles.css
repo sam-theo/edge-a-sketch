@@ -4,20 +4,40 @@ body{
     margin: 0;
 }
 
-.container{
-    display: flex;
+.body{
     width: 100vw;
     height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    width: 50vw;
+    height: 50vw;
     flex-wrap: wrap;
     margin: 0;
+    border-radius: 2px;
+    border-style: solid;
 }
 
 .cell {
-    width: calc(100% / 16); /* Each cell occupies 1/16th of the width */
-    height: calc(100% / 16); /* Each cell occupies 1/16th of the height */
+    width: calc(100% / 16); /* Default width */
+    height: calc(100% / 16); /* Default height */
     margin: 0;
 }
 
-.cell:hover{
-    background-color: blue;
+/* Add these rules to apply the calculated width and height */
+.cell.custom-size {
+    width: calc(100% / var(--size));
+    height: calc(100% / var(--size));
+}
+
+.button{
+    margin-top: 47.5vh;
+    margin-left: 12.5vw;
+    position: absolute;
+    height: 5vh;
 }
