@@ -2,6 +2,8 @@ body{
     width: 100vw;
     height: 100vh;
     margin: 0;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
 }
 
 .body{
@@ -21,6 +23,7 @@ body{
     margin: 0;
     border-radius: 2px;
     border-style: solid;
+    background-color: white;
 }
 
 .cell {
@@ -36,8 +39,33 @@ body{
 }
 
 .button{
-    margin-top: 47.5vh;
-    margin-left: 12.5vw;
-    position: absolute;
     height: 5vh;
+    width: 7vw;
+    margin-bottom: 3vh;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    background-color: aliceblue;
+}
+
+.buttons{
+    margin-top: 39.5vh;
+    margin-left: 12.5vw;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+}
+
+.title{
+    position: fixed;
+    text-align: center;
+    font-size: 5vh;
+    font-family: 'Gill Sans MT';
+    margin-top: 4px;
+}
+
+.titleCont{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
 }

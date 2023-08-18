@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const button = document.querySelector(".button");
+    const button = document.getElementById('change');
+    const buttonClear = document.getElementById('clear');
+    const buttonColor = document.getElementById('color');
     const gridContainer = document.getElementById('container');
-    const numRows = 16;
-    const numColumns = 16;
+    let numRows = 16;
     let isMouseDown = false;
+    let color = false;
+
 
     // Add click event listener to the "Change grid" button
     button.addEventListener("click", function () {
@@ -11,11 +14,26 @@ document.addEventListener("DOMContentLoaded", function () {
         gridSize = parseInt(gridSize);
 
         if (!isNaN(gridSize) && gridSize > 0 && gridSize <= 100) {
+            numRows = gridSize;
             clearGrid(gridContainer);
             createGrid(gridContainer, gridSize);
-        } else {
-            alert("Please enter a valid number lower than 100.");
+        } 
+    });
+
+    buttonClear.addEventListener("click", function(){
+        clearGrid(gridContainer);
+        createGrid(gridContainer, numRows);
+    });
+
+    buttonColor.addEventListener("click", function(){
+        color = !color;
+        if(color){
+            buttonColor.textContent = "Black";
+        }else{
+            buttonColor.textContent = "Color";
         }
+        clearGrid(gridContainer);
+        createGrid(gridContainer, numRows);
     });
 
      // Inside the createGrid function
@@ -32,16 +50,20 @@ document.addEventListener("DOMContentLoaded", function () {
             for (let column = 0; column < size; column++) {
                 const cell = document.createElement('div');
                 cell.classList.add('cell', 'custom-size'); // Add the 'custom-size' class
+                let cellColor = "black";
+                if(color){
+                    cellColor = getRandomColor();
+                }
                 cell.addEventListener("mousedown", function () {
                     isMouseDown = true;
-                    this.style.backgroundColor = "black";
+                    this.style.backgroundColor = cellColor;
                 });
                 cell.addEventListener("mouseup", function () {
                     isMouseDown = false;
                 });
                 cell.addEventListener("mouseenter", function () {
                     if (isMouseDown) {
-                        this.style.backgroundColor = "black";
+                        this.style.backgroundColor = cellColor;
                     }
                 });
                 container.appendChild(cell);
@@ -56,6 +78,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
     // Initialize the grid with default size
     createGrid(gridContainer, numRows);
 });
+
